@@ -1,0 +1,5 @@
+platform:ios,'8.0'
+
+target '塑形大师' do
+	pod 'pop'
+end

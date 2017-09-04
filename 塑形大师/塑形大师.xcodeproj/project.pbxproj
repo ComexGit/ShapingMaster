@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A96E7991BC462C425F41D5AC /* libPods-塑形大师.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAC2DAE5602F305F5826FCD /* libPods-塑形大师.a */; };
 		C4272F121F5CEEB6005FCD17 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F111F5CEEB6005FCD17 /* main.m */; };
 		C4272F151F5CEEB6005FCD17 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F141F5CEEB6005FCD17 /* AppDelegate.m */; };
 		C4272F1B1F5CEEB6005FCD17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4272F191F5CEEB6005FCD17 /* Main.storyboard */; };
@@ -15,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5EAC2DAE5602F305F5826FCD /* libPods-塑形大师.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-塑形大师.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F07FC7B42FEE8D1F7D7C978 /* Pods-塑形大师.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-塑形大师.release.xcconfig"; path = "Pods/Target Support Files/Pods-塑形大师/Pods-塑形大师.release.xcconfig"; sourceTree = "<group>"; };
 		C4272F0D1F5CEEB6005FCD17 /* 塑形大师.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "塑形大师.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4272F111F5CEEB6005FCD17 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C4272F131F5CEEB6005FCD17 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -23,6 +26,7 @@
 		C4272F1C1F5CEEB6005FCD17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4272F1F1F5CEEB6005FCD17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4272F211F5CEEB6005FCD17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2B803D68DE0681B291D0F46 /* Pods-塑形大师.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-塑形大师.debug.xcconfig"; path = "Pods/Target Support Files/Pods-塑形大师/Pods-塑形大师.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,17 +34,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A96E7991BC462C425F41D5AC /* libPods-塑形大师.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5274869127F2571386B63B11 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F2B803D68DE0681B291D0F46 /* Pods-塑形大师.debug.xcconfig */,
+				8F07FC7B42FEE8D1F7D7C978 /* Pods-塑形大师.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		58A2D0AAEF45AC81E6117AC7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5EAC2DAE5602F305F5826FCD /* libPods-塑形大师.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C4272F041F5CEEB6005FCD17 = {
 			isa = PBXGroup;
 			children = (
 				C4272F0F1F5CEEB6005FCD17 /* 塑形大师 */,
 				C4272F0E1F5CEEB6005FCD17 /* Products */,
+				5274869127F2571386B63B11 /* Pods */,
+				58A2D0AAEF45AC81E6117AC7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,9 +121,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C4272F241F5CEEB6005FCD17 /* Build configuration list for PBXNativeTarget "塑形大师" */;
 			buildPhases = (
+				801ECB57AED8FFCD20DBEF5C /* [CP] Check Pods Manifest.lock */,
 				C4272F091F5CEEB6005FCD17 /* Sources */,
 				C4272F0A1F5CEEB6005FCD17 /* Frameworks */,
 				C4272F0B1F5CEEB6005FCD17 /* Resources */,
+				E360F660CCE43E2A14962B10 /* [CP] Embed Pods Frameworks */,
+				A0682316657717787C1C4B58 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -156,6 +183,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		801ECB57AED8FFCD20DBEF5C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A0682316657717787C1C4B58 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-塑形大师/Pods-塑形大师-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E360F660CCE43E2A14962B10 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-塑形大师/Pods-塑形大师-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C4272F091F5CEEB6005FCD17 /* Sources */ = {
@@ -281,6 +356,7 @@
 		};
 		C4272F251F5CEEB6005FCD17 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2B803D68DE0681B291D0F46 /* Pods-塑形大师.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4W4N22BKMV;
@@ -293,6 +369,7 @@
 		};
 		C4272F261F5CEEB6005FCD17 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8F07FC7B42FEE8D1F7D7C978 /* Pods-塑形大师.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4W4N22BKMV;
