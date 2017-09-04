@@ -10,9 +10,14 @@
 		A96E7991BC462C425F41D5AC /* libPods-塑形大师.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5EAC2DAE5602F305F5826FCD /* libPods-塑形大师.a */; };
 		C4272F121F5CEEB6005FCD17 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F111F5CEEB6005FCD17 /* main.m */; };
 		C4272F151F5CEEB6005FCD17 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F141F5CEEB6005FCD17 /* AppDelegate.m */; };
-		C4272F1B1F5CEEB6005FCD17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4272F191F5CEEB6005FCD17 /* Main.storyboard */; };
 		C4272F1D1F5CEEB6005FCD17 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4272F1C1F5CEEB6005FCD17 /* Assets.xcassets */; };
 		C4272F201F5CEEB6005FCD17 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4272F1E1F5CEEB6005FCD17 /* LaunchScreen.storyboard */; };
+		C4272F341F5CF5F8005FCD17 /* TYMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F331F5CF5F8005FCD17 /* TYMainViewController.m */; };
+		C4272F371F5CF621005FCD17 /* TYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F361F5CF621005FCD17 /* TYNavigationController.m */; };
+		C4272F3A1F5CF8B5005FCD17 /* TYNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F391F5CF8B5005FCD17 /* TYNavigationBar.m */; };
+		C4272F3D1F5CF965005FCD17 /* TYTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F3C1F5CF965005FCD17 /* TYTabBar.m */; };
+		C4272F431F5D2E49005FCD17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4272F421F5D2E49005FCD17 /* Main.storyboard */; };
+		C4272F461F5D4260005FCD17 /* TYItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F451F5D4260005FCD17 /* TYItemCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,10 +27,20 @@
 		C4272F111F5CEEB6005FCD17 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C4272F131F5CEEB6005FCD17 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C4272F141F5CEEB6005FCD17 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		C4272F1A1F5CEEB6005FCD17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4272F1C1F5CEEB6005FCD17 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4272F1F1F5CEEB6005FCD17 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4272F211F5CEEB6005FCD17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4272F321F5CF5F8005FCD17 /* TYMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYMainViewController.h; sourceTree = "<group>"; };
+		C4272F331F5CF5F8005FCD17 /* TYMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYMainViewController.m; sourceTree = "<group>"; };
+		C4272F351F5CF621005FCD17 /* TYNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYNavigationController.h; sourceTree = "<group>"; };
+		C4272F361F5CF621005FCD17 /* TYNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYNavigationController.m; sourceTree = "<group>"; };
+		C4272F381F5CF8B5005FCD17 /* TYNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYNavigationBar.h; sourceTree = "<group>"; };
+		C4272F391F5CF8B5005FCD17 /* TYNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYNavigationBar.m; sourceTree = "<group>"; };
+		C4272F3B1F5CF965005FCD17 /* TYTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYTabBar.h; sourceTree = "<group>"; };
+		C4272F3C1F5CF965005FCD17 /* TYTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYTabBar.m; sourceTree = "<group>"; };
+		C4272F421F5D2E49005FCD17 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		C4272F441F5D4260005FCD17 /* TYItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYItemCollectionViewCell.h; sourceTree = "<group>"; };
+		C4272F451F5D4260005FCD17 /* TYItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYItemCollectionViewCell.m; sourceTree = "<group>"; };
 		F2B803D68DE0681B291D0F46 /* Pods-塑形大师.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-塑形大师.debug.xcconfig"; path = "Pods/Target Support Files/Pods-塑形大师/Pods-塑形大师.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,7 +96,6 @@
 			children = (
 				C4272F281F5CEEF8005FCD17 /* Other */,
 				C4272F271F5CEECD005FCD17 /* Main */,
-				C4272F191F5CEEB6005FCD17 /* Main.storyboard */,
 				C4272F101F5CEEB6005FCD17 /* Supporting Files */,
 			);
 			path = "塑形大师";
@@ -91,9 +105,9 @@
 			isa = PBXGroup;
 			children = (
 				C4272F1E1F5CEEB6005FCD17 /* LaunchScreen.storyboard */,
+				C4272F111F5CEEB6005FCD17 /* main.m */,
 				C4272F211F5CEEB6005FCD17 /* Info.plist */,
 				C4272F1C1F5CEEB6005FCD17 /* Assets.xcassets */,
-				C4272F111F5CEEB6005FCD17 /* main.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -101,8 +115,11 @@
 		C4272F271F5CEECD005FCD17 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				C4272F131F5CEEB6005FCD17 /* AppDelegate.h */,
-				C4272F141F5CEEB6005FCD17 /* AppDelegate.m */,
+				C4272F411F5D2DE8005FCD17 /* Storyboard */,
+				C4272F301F5CF4E6005FCD17 /* ViewModel */,
+				C4272F2E1F5CF448005FCD17 /* Model */,
+				C4272F2F1F5CF45D005FCD17 /* View */,
+				C4272F2D1F5CF421005FCD17 /* Controller */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -110,8 +127,80 @@
 		C4272F281F5CEEF8005FCD17 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				C4272F3F1F5D2DA5005FCD17 /* Tool */,
+				C4272F3E1F5D2D81005FCD17 /* Helper */,
+				C4272F311F5CF5CA005FCD17 /* Common */,
 			);
 			name = Other;
+			sourceTree = "<group>";
+		};
+		C4272F2D1F5CF421005FCD17 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C4272F321F5CF5F8005FCD17 /* TYMainViewController.h */,
+				C4272F331F5CF5F8005FCD17 /* TYMainViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		C4272F2E1F5CF448005FCD17 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C4272F2F1F5CF45D005FCD17 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C4272F441F5D4260005FCD17 /* TYItemCollectionViewCell.h */,
+				C4272F451F5D4260005FCD17 /* TYItemCollectionViewCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		C4272F301F5CF4E6005FCD17 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		C4272F311F5CF5CA005FCD17 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C4272F131F5CEEB6005FCD17 /* AppDelegate.h */,
+				C4272F141F5CEEB6005FCD17 /* AppDelegate.m */,
+				C4272F351F5CF621005FCD17 /* TYNavigationController.h */,
+				C4272F361F5CF621005FCD17 /* TYNavigationController.m */,
+				C4272F381F5CF8B5005FCD17 /* TYNavigationBar.h */,
+				C4272F391F5CF8B5005FCD17 /* TYNavigationBar.m */,
+				C4272F3B1F5CF965005FCD17 /* TYTabBar.h */,
+				C4272F3C1F5CF965005FCD17 /* TYTabBar.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		C4272F3E1F5D2D81005FCD17 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		C4272F3F1F5D2DA5005FCD17 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tool;
+			sourceTree = "<group>";
+		};
+		C4272F411F5D2DE8005FCD17 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				C4272F421F5D2E49005FCD17 /* Main.storyboard */,
+			);
+			name = Storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,9 +265,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4272F431F5D2E49005FCD17 /* Main.storyboard in Resources */,
 				C4272F201F5CEEB6005FCD17 /* LaunchScreen.storyboard in Resources */,
 				C4272F1D1F5CEEB6005FCD17 /* Assets.xcassets in Resources */,
-				C4272F1B1F5CEEB6005FCD17 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,22 +326,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4272F371F5CF621005FCD17 /* TYNavigationController.m in Sources */,
+				C4272F461F5D4260005FCD17 /* TYItemCollectionViewCell.m in Sources */,
 				C4272F151F5CEEB6005FCD17 /* AppDelegate.m in Sources */,
+				C4272F3D1F5CF965005FCD17 /* TYTabBar.m in Sources */,
 				C4272F121F5CEEB6005FCD17 /* main.m in Sources */,
+				C4272F3A1F5CF8B5005FCD17 /* TYNavigationBar.m in Sources */,
+				C4272F341F5CF5F8005FCD17 /* TYMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C4272F191F5CEEB6005FCD17 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C4272F1A1F5CEEB6005FCD17 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C4272F1E1F5CEEB6005FCD17 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -361,8 +447,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4W4N22BKMV;
 				INFOPLIST_FILE = "塑形大师/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tenyears.shapingmaster.----";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tenyears.shapingmaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -374,8 +461,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4W4N22BKMV;
 				INFOPLIST_FILE = "塑形大师/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tenyears.shapingmaster.----";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tenyears.shapingmaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -399,6 +487,7 @@
 				C4272F261F5CEEB6005FCD17 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
