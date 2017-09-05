@@ -55,7 +55,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pX6-mf-StR">
-                                <rect key="frame" x="0.0" y="104" width="375" height="563"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="499"/>
                                 <color key="backgroundColor" red="0.17716816067695618" green="0.19143438339233398" blue="0.19599112868309021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A77-Ue-fA2">
                                     <size key="itemSize" width="172" height="208"/>
@@ -109,21 +109,32 @@
                                     <outlet property="delegate" destination="4Lz-px-X9h" id="K7W-uD-UiZ"/>
                                 </connections>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2U-46-pou" customClass="TYTabBar">
+                                <rect key="frame" x="0.0" y="603" width="375" height="64"/>
+                                <color key="backgroundColor" red="0.12352243810892105" green="0.13361826539039612" blue="0.13848865032196045" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="GGO-DU-TH0"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zQX-1Z-l8Y" firstAttribute="top" secondItem="pX6-mf-StR" secondAttribute="bottom" id="1hG-Xb-0Ud"/>
+                            <constraint firstAttribute="trailing" secondItem="b2U-46-pou" secondAttribute="trailing" id="1Y2-vH-XLA"/>
+                            <constraint firstItem="b2U-46-pou" firstAttribute="top" secondItem="pX6-mf-StR" secondAttribute="bottom" id="DRj-BF-e7c"/>
                             <constraint firstItem="pX6-mf-StR" firstAttribute="leading" secondItem="O63-c6-qXg" secondAttribute="leading" id="Pb3-G2-Lfq"/>
                             <constraint firstAttribute="trailing" secondItem="pX6-mf-StR" secondAttribute="trailing" id="Qqz-Hq-jEm"/>
                             <constraint firstItem="dgn-wk-gqi" firstAttribute="top" secondItem="O63-c6-qXg" secondAttribute="top" id="W0u-5P-3Rx"/>
+                            <constraint firstItem="b2U-46-pou" firstAttribute="leading" secondItem="O63-c6-qXg" secondAttribute="leading" id="Z0I-z1-3zH"/>
                             <constraint firstAttribute="trailing" secondItem="dgn-wk-gqi" secondAttribute="trailing" id="b1X-ik-Rva"/>
                             <constraint firstItem="dgn-wk-gqi" firstAttribute="leading" secondItem="O63-c6-qXg" secondAttribute="leading" id="fq8-jF-UBK"/>
+                            <constraint firstItem="zQX-1Z-l8Y" firstAttribute="top" secondItem="b2U-46-pou" secondAttribute="bottom" id="nS6-LG-Adu"/>
                             <constraint firstItem="pX6-mf-StR" firstAttribute="top" secondItem="dgn-wk-gqi" secondAttribute="bottom" id="oFK-41-EHt"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="5Vq-i6-eG4"/>
                     <connections>
                         <outlet property="mCollectionView" destination="pX6-mf-StR" id="ACH-Uv-aMg"/>
+                        <outlet property="mTabBar" destination="b2U-46-pou" id="SMZ-x2-l4D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rbm-SW-IAe" userLabel="First Responder" sceneMemberID="firstResponder"/>

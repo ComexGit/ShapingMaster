@@ -18,6 +18,7 @@
 		C4272F3D1F5CF965005FCD17 /* TYTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F3C1F5CF965005FCD17 /* TYTabBar.m */; };
 		C4272F431F5D2E49005FCD17 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4272F421F5D2E49005FCD17 /* Main.storyboard */; };
 		C4272F461F5D4260005FCD17 /* TYItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F451F5D4260005FCD17 /* TYItemCollectionViewCell.m */; };
+		C4272F491F5E914A005FCD17 /* TYWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F481F5E914A005FCD17 /* TYWaveView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		C4272F421F5D2E49005FCD17 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C4272F441F5D4260005FCD17 /* TYItemCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYItemCollectionViewCell.h; sourceTree = "<group>"; };
 		C4272F451F5D4260005FCD17 /* TYItemCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYItemCollectionViewCell.m; sourceTree = "<group>"; };
+		C4272F471F5E914A005FCD17 /* TYWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWaveView.h; sourceTree = "<group>"; };
+		C4272F481F5E914A005FCD17 /* TYWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWaveView.m; sourceTree = "<group>"; };
 		F2B803D68DE0681B291D0F46 /* Pods-塑形大师.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-塑形大师.debug.xcconfig"; path = "Pods/Target Support Files/Pods-塑形大师/Pods-塑形大师.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +180,8 @@
 				C4272F391F5CF8B5005FCD17 /* TYNavigationBar.m */,
 				C4272F3B1F5CF965005FCD17 /* TYTabBar.h */,
 				C4272F3C1F5CF965005FCD17 /* TYTabBar.m */,
+				C4272F471F5E914A005FCD17 /* TYWaveView.h */,
+				C4272F481F5E914A005FCD17 /* TYWaveView.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -330,6 +335,7 @@
 				C4272F461F5D4260005FCD17 /* TYItemCollectionViewCell.m in Sources */,
 				C4272F151F5CEEB6005FCD17 /* AppDelegate.m in Sources */,
 				C4272F3D1F5CF965005FCD17 /* TYTabBar.m in Sources */,
+				C4272F491F5E914A005FCD17 /* TYWaveView.m in Sources */,
 				C4272F121F5CEEB6005FCD17 /* main.m in Sources */,
 				C4272F3A1F5CF8B5005FCD17 /* TYNavigationBar.m in Sources */,
 				C4272F341F5CF5F8005FCD17 /* TYMainViewController.m in Sources */,

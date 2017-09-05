@@ -8,6 +8,9 @@
 
 #import "TYMainViewController.h"
 #import "TYItemCollectionViewCell.h"
+#import "TYTabBar.h"
+#import "TYWaveView.h"
+
 
 #define SCREEN_WIDTH        [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT       [[UIScreen mainScreen] bounds].size.height
@@ -21,6 +24,8 @@ static NSString *reusedStr = @"itemReusedCell";
 @interface TYMainViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *mCollectionView;
+@property (nonatomic, weak) IBOutlet TYTabBar         *mTabBar;
+@property (nonatomic)                TYWaveView       *mWaveView;
 
 @end
 
@@ -29,7 +34,13 @@ static NSString *reusedStr = @"itemReusedCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    
+    [self setUpWaveView];
+}
+
+-(void)setUpWaveView
+{
+    self.mWaveView = [[TYWaveView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
+    [_mTabBar addSubview:_mWaveView];
 }
 
 #pragma mark - UICollectionViewDataSource
