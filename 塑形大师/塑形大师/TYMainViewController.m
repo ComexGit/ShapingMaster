@@ -39,7 +39,7 @@ static NSString *reusedStr = @"itemReusedCell";
 
 -(void)setUpWaveView
 {
-    self.mWaveView = [[TYWaveView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 10)];
+    self.mWaveView = [[TYWaveView alloc] initWithFrame:CGRectMake(0, -10, SCREEN_WIDTH, 10)];
     [_mTabBar addSubview:_mWaveView];
 }
 

@@ -13,6 +13,7 @@
 
 @property(nonatomic) CAShapeLayer *frontWaveLayer;
 @property(nonatomic) CAShapeLayer *insideWaveLayer;
+@property(nonatomic) CADisplayLink *waveDisplayLink;
 
 @end
 
@@ -46,17 +47,17 @@
         
         [self configWaveProperties];
         [self initWaves];
-        
-        [self drawWaveWithLayer:_frontWaveLayer offset:offsetF];
-        [self drawWaveWithLayer:_insideWaveLayer offset:offsetS];
+        [self initTimer];
     }
     return self;
 }
 
 -(void)configWaveProperties
 {
-    _frontColor    = [UIColor blackColor];
-    _insideColor   = [UIColor grayColor];
+//    [UIColor colorWithRed:186/255.0 green:206/255.0 blue:0 alpha:1.0];
+//    [UIColor colorWithRed:45/255.0 green:49/255.0 blue:50/255.0 alpha:1.0];
+    _frontColor    = [UIColor colorWithRed:32/255.0 green:35/255.0 blue:36/255.0 alpha:1.0];
+    _insideColor   = [UIColor colorWithRed:57/255.0 green:61/255.0 blue:63/255.0 alpha:1.0];
     _frontSpeed    = 0.01;
     _insideSpeed   = 0.01 * 1.2;
     _waveOffset    = M_PI;
@@ -86,6 +87,12 @@
     [self.layer insertSublayer:_insideWaveLayer below:_frontWaveLayer]; //将第二个放在第一个下面
 }
 
+- (void) initTimer {
+
+    _waveDisplayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(refreshCurrentWave:)];
+    [_waveDisplayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+}
+
 - (void) drawWaveWithLayer:(CAShapeLayer*)layer offset:(CGFloat)offset {
 
     CGMutablePathRef path = CGPathCreateMutable();
@@ -112,5 +119,13 @@
 
 }
 
+-(void)refreshCurrentWave:(CADisplayLink *)displayLink
+{
+    offsetF += waveSpeedF * direction; //direction为枚举值，正向为-1，逆向为1，通过改变符号改变曲线的移动方向
+    offsetS += waveSpeedS * direction;
+    
+    [self drawWaveWithLayer:_frontWaveLayer offset:offsetF];
+    [self drawWaveWithLayer:_insideWaveLayer offset:offsetS];
+}
 
 @end
