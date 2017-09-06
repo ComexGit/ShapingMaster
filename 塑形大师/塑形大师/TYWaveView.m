@@ -56,10 +56,12 @@
 {
 //    [UIColor colorWithRed:186/255.0 green:206/255.0 blue:0 alpha:1.0];
 //    [UIColor colorWithRed:45/255.0 green:49/255.0 blue:50/255.0 alpha:1.0];
-    _frontColor    = [UIColor colorWithRed:32/255.0 green:35/255.0 blue:36/255.0 alpha:1.0];
-    _insideColor   = [UIColor colorWithRed:57/255.0 green:61/255.0 blue:63/255.0 alpha:1.0];
-    _frontSpeed    = 0.01;
-    _insideSpeed   = 0.01 * 1.2;
+//    [UIColor colorWithRed:32/255.0 green:35/255.0 blue:36/255.0 alpha:1.0];
+//    [UIColor colorWithRed:57/255.0 green:61/255.0 blue:63/255.0 alpha:1.0];
+    _frontColor    = [UIColor colorWithRed:45/255.0 green:49/255.0 blue:50/255.0 alpha:1.0];
+    _insideColor   = [UIColor colorWithRed:32/255.0 green:35/255.0 blue:36/255.0 alpha:1.0];
+    _frontSpeed    = 0.02;
+    _insideSpeed   = 0.02 * 1.2;
     _waveOffset    = M_PI;
     _directionType = WaveDirectionForward;
 }
@@ -116,7 +118,6 @@
     layer.path = path; //设置path
     
     CGPathRelease(path);
-
 }
 
 -(void)refreshCurrentWave:(CADisplayLink *)displayLink

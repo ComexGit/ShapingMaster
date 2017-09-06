@@ -10,6 +10,8 @@
 #import "TYItemCollectionViewCell.h"
 #import "TYTabBar.h"
 #import "TYWaveView.h"
+#import "TYNavigationBar.h"
+#import "TYRoofView.h"
 
 
 #define SCREEN_WIDTH        [[UIScreen mainScreen] bounds].size.width
@@ -25,7 +27,9 @@ static NSString *reusedStr = @"itemReusedCell";
 
 @property (nonatomic, weak) IBOutlet UICollectionView *mCollectionView;
 @property (nonatomic, weak) IBOutlet TYTabBar         *mTabBar;
-@property (nonatomic)                TYWaveView       *mWaveView;
+@property (nonatomic, weak) IBOutlet TYNavigationBar  *mNavBar;
+@property (nonatomic)                TYWaveView       *mWaveViewNav;
+@property (nonatomic)                TYRoofView       *mRoofView;
 
 @end
 
@@ -35,12 +39,19 @@ static NSString *reusedStr = @"itemReusedCell";
     [super viewDidLoad];
 
     [self setUpWaveView];
+    [self setUpRoofView];
 }
 
 -(void)setUpWaveView
 {
-    self.mWaveView = [[TYWaveView alloc] initWithFrame:CGRectMake(0, -10, SCREEN_WIDTH, 10)];
-    [_mTabBar addSubview:_mWaveView];
+    self.mWaveViewNav = [[TYWaveView alloc] initWithFrame:CGRectMake(0, _mNavBar.frame.size.height-10, SCREEN_WIDTH, 10)];
+    [_mNavBar addSubview:_mWaveViewNav];
+}
+
+- (void)setUpRoofView {
+
+    self.mRoofView = [[TYRoofView alloc]initWithFrame:CGRectMake(0, -15, SCREEN_WIDTH, 15)];
+    [_mTabBar addSubview:_mRoofView];
 }
 
 #pragma mark - UICollectionViewDataSource
