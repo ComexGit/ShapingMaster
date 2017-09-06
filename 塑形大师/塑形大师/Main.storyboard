@@ -111,10 +111,50 @@
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2U-46-pou" customClass="TYTabBar">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMH-tz-jDM">
+                                        <rect key="frame" x="164" y="7" width="46" height="30"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="0.48351955410000003" green="0.53813797240000005" blue="0.56471896170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btn2Click:" destination="b2U-46-pou" eventType="touchUpInside" id="mzO-jt-DDZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5eA-Ny-pXz">
+                                        <rect key="frame" x="270" y="7" width="46" height="30"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="0.48351955410000003" green="0.53813797240000005" blue="0.56471896170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btn3Click:" destination="b2U-46-pou" eventType="touchUpInside" id="t6X-fj-N3t"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecR-Ss-w5U">
+                                        <rect key="frame" x="58" y="7" width="46" height="30"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="0.48351955413818359" green="0.53813797235488892" blue="0.56471896171569824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="btn1Click:" destination="b2U-46-pou" eventType="touchUpInside" id="tbN-Zg-dU5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.12352243810892105" green="0.13361826539039612" blue="0.13848865032196045" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="cMH-tz-jDM" firstAttribute="centerY" secondItem="b2U-46-pou" secondAttribute="centerY" id="G1L-km-Xca"/>
                                     <constraint firstAttribute="height" constant="44" id="GGO-DU-TH0"/>
+                                    <constraint firstItem="cMH-tz-jDM" firstAttribute="leading" secondItem="ecR-Ss-w5U" secondAttribute="trailing" constant="60" id="I4b-HR-lyo"/>
+                                    <constraint firstItem="ecR-Ss-w5U" firstAttribute="centerY" secondItem="b2U-46-pou" secondAttribute="centerY" id="VhT-o5-kyP"/>
+                                    <constraint firstItem="5eA-Ny-pXz" firstAttribute="centerY" secondItem="b2U-46-pou" secondAttribute="centerY" id="n5z-kh-Hsb"/>
+                                    <constraint firstItem="5eA-Ny-pXz" firstAttribute="leading" secondItem="cMH-tz-jDM" secondAttribute="trailing" constant="60" id="ojX-A0-VXE"/>
+                                    <constraint firstItem="cMH-tz-jDM" firstAttribute="centerX" secondItem="b2U-46-pou" secondAttribute="centerX" id="wQY-Mc-Xp9"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="btn1" destination="ecR-Ss-w5U" id="KB3-gt-JyZ"/>
+                                    <outlet property="btn2" destination="cMH-tz-jDM" id="TvK-4g-baH"/>
+                                    <outlet property="btn3" destination="5eA-Ny-pXz" id="MBO-7S-P9T"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
