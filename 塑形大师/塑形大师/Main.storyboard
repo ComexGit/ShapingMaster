@@ -55,7 +55,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pX6-mf-StR">
-                                <rect key="frame" x="0.0" y="104" width="375" height="499"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="519"/>
                                 <color key="backgroundColor" red="0.17716816067695618" green="0.19143438339233398" blue="0.19599112868309021" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="A77-Ue-fA2">
                                     <size key="itemSize" width="172" height="208"/>
@@ -110,10 +110,10 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2U-46-pou" customClass="TYTabBar">
-                                <rect key="frame" x="0.0" y="603" width="375" height="64"/>
+                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <color key="backgroundColor" red="0.12352243810892105" green="0.13361826539039612" blue="0.13848865032196045" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="GGO-DU-TH0"/>
+                                    <constraint firstAttribute="height" constant="44" id="GGO-DU-TH0"/>
                                 </constraints>
                             </view>
                         </subviews>
