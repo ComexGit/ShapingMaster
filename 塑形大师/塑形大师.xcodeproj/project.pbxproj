@@ -20,6 +20,7 @@
 		C4272F461F5D4260005FCD17 /* TYItemCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F451F5D4260005FCD17 /* TYItemCollectionViewCell.m */; };
 		C4272F491F5E914A005FCD17 /* TYWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F481F5E914A005FCD17 /* TYWaveView.m */; };
 		C4272F4C1F5FCB76005FCD17 /* TYRoofView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F4B1F5FCB76005FCD17 /* TYRoofView.m */; };
+		C4272F501F612B02005FCD17 /* UIResponder+Event.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F4F1F612B02005FCD17 /* UIResponder+Event.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,8 @@
 		C4272F481F5E914A005FCD17 /* TYWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWaveView.m; sourceTree = "<group>"; };
 		C4272F4A1F5FCB76005FCD17 /* TYRoofView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYRoofView.h; sourceTree = "<group>"; };
 		C4272F4B1F5FCB76005FCD17 /* TYRoofView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYRoofView.m; sourceTree = "<group>"; };
+		C4272F4E1F612B02005FCD17 /* UIResponder+Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIResponder+Event.h"; sourceTree = "<group>"; };
+		C4272F4F1F612B02005FCD17 /* UIResponder+Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIResponder+Event.m"; sourceTree = "<group>"; };
 		F2B803D68DE0681B291D0F46 /* Pods-塑形大师.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-塑形大师.debug.xcconfig"; path = "Pods/Target Support Files/Pods-塑形大师/Pods-塑形大师.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,6 +136,7 @@
 		C4272F281F5CEEF8005FCD17 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				C4272F4D1F612AC5005FCD17 /* Category */,
 				C4272F3F1F5D2DA5005FCD17 /* Tool */,
 				C4272F3E1F5D2D81005FCD17 /* Helper */,
 				C4272F311F5CF5CA005FCD17 /* Common */,
@@ -211,6 +215,15 @@
 				C4272F421F5D2E49005FCD17 /* Main.storyboard */,
 			);
 			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		C4272F4D1F612AC5005FCD17 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				C4272F4E1F612B02005FCD17 /* UIResponder+Event.h */,
+				C4272F4F1F612B02005FCD17 /* UIResponder+Event.m */,
+			);
+			name = Category;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4272F371F5CF621005FCD17 /* TYNavigationController.m in Sources */,
+				C4272F501F612B02005FCD17 /* UIResponder+Event.m in Sources */,
 				C4272F4C1F5FCB76005FCD17 /* TYRoofView.m in Sources */,
 				C4272F461F5D4260005FCD17 /* TYItemCollectionViewCell.m in Sources */,
 				C4272F151F5CEEB6005FCD17 /* AppDelegate.m in Sources */,

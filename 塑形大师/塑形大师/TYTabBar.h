@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    
+    LayerPositionLeft,
+    LayerPositionCenter,
+    LayerPositionRight
+    
+} LayerPosition;
+
 @interface TYTabBar : UIView
+
+@property (nonatomic, assign) LayerPosition selectedPos;
 
 @end
