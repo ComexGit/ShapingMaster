@@ -113,8 +113,8 @@
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cMH-tz-jDM">
-                                        <rect key="frame" x="164" y="7" width="46" height="30"/>
-                                        <state key="normal" title="Button">
+                                        <rect key="frame" x="166.5" y="7" width="41" height="30"/>
+                                        <state key="normal" title="Home">
                                             <color key="titleColor" red="0.48351955410000003" green="0.53813797240000005" blue="0.56471896170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -122,8 +122,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5eA-Ny-pXz">
-                                        <rect key="frame" x="270" y="7" width="46" height="30"/>
-                                        <state key="normal" title="Button">
+                                        <rect key="frame" x="267.5" y="7" width="30" height="30"/>
+                                        <state key="normal" title="Stat">
                                             <color key="titleColor" red="0.48351955410000003" green="0.53813797240000005" blue="0.56471896170000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -131,8 +131,8 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecR-Ss-w5U">
-                                        <rect key="frame" x="58" y="7" width="46" height="30"/>
-                                        <state key="normal" title="Button">
+                                        <rect key="frame" x="76.5" y="7" width="30" height="30"/>
+                                        <state key="normal" title="Plan">
                                             <color key="titleColor" red="0.48351955413818359" green="0.53813797235488892" blue="0.56471896171569824" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>

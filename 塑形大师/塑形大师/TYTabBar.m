@@ -23,6 +23,7 @@ typedef enum {
     CGFloat layerWidth;
     CGFloat layerHeight;
     CGFloat layerCapPad;
+    CGFloat btnPad;
     
     LayerPosition layerPosition;
 }
@@ -48,10 +49,11 @@ typedef enum {
     layerWidth = 40;
     layerHeight = 38;
     layerCapPad = 15;
+    btnPad = self.btn2.center.x - self.btn1.center.x;
     
     swooshLayer = [CAShapeLayer layer];
     swooshLayer.fillColor = [UIColor colorWithRed:186/255.0 green:206/255.0 blue:0 alpha:1.0].CGColor;
-    [self.layer addSublayer:swooshLayer];
+    [self.layer insertSublayer:swooshLayer below:self.btn2.layer];
     
     layerPosition = LayerPositionCenter;
     [self drawSwooshLayerWithPosition:layerPosition];
@@ -82,6 +84,7 @@ typedef enum {
     UIBezierPath *path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(center.x - layerWidth/2 - layerCapPad, center.y - layerHeight/2, layerWidth+layerCapPad*2, layerHeight) cornerRadius:layerHeight/2];
     
     swooshLayer.path = path.CGPath;
+    NSLog(@"%f,%f", swooshLayer.position.x, swooshLayer.position.y);
 }
 
 - (void) swooshLayerTransition:(LayerPosition)position {
@@ -92,15 +95,24 @@ typedef enum {
     
     switch (position) {
         case LayerPositionLeft:
-            swooshLayer.position = self.btn1.center;
+            swooshLayer.position = CGPointMake(-btnPad, 0);
+            [self.btn1 setTitleColor:[UIColor colorWithRed:48/255.0 green:56/255.0 blue:58/255.0 alpha:1.0] forState:UIControlStateNormal];
+            [self.btn2 setTitleColor:[UIColor colorWithRed:104/255.0 green:118/255.0 blue:126/255.0 alpha:1.0] forState:UIControlStateNormal];
+            [self.btn3 setTitleColor:[UIColor colorWithRed:104/255.0 green:118/255.0 blue:126/255.0 alpha:1.0] forState:UIControlStateNormal];
             break;
             
         case LayerPositionCenter:
-            swooshLayer.position = self.btn2.center;
+            swooshLayer.position = CGPointMake(0, 0);
+            [self.btn2 setTitleColor:[UIColor colorWithRed:48/255.0 green:56/255.0 blue:58/255.0 alpha:1.0] forState:UIControlStateNormal];
+            [self.btn1 setTitleColor:[UIColor colorWithRed:104/255.0 green:118/255.0 blue:126/255.0 alpha:1.0] forState:UIControlStateNormal];
+            [self.btn3 setTitleColor:[UIColor colorWithRed:104/255.0 green:118/255.0 blue:126/255.0 alpha:1.0] forState:UIControlStateNormal];
             break;
             
         case LayerPositionRight:
-            swooshLayer.position = self.btn3.center;
+            swooshLayer.position = CGPointMake(btnPad, 0);
+            [self.btn3 setTitleColor:[UIColor colorWithRed:48/255.0 green:56/255.0 blue:58/255.0 alpha:1.0] forState:UIControlStateNormal];
+            [self.btn1 setTitleColor:[UIColor colorWithRed:104/255.0 green:118/255.0 blue:126/255.0 alpha:1.0] forState:UIControlStateNormal];
+            [self.btn2 setTitleColor:[UIColor colorWithRed:104/255.0 green:118/255.0 blue:126/255.0 alpha:1.0] forState:UIControlStateNormal];
             break;
             
         default:
