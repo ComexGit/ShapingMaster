@@ -8,6 +8,8 @@
 
 #import "TYTabBar.h"
 #import "UIResponder+Event.h"
+#import "TYRoofView.h"
+
 
 #define SLIDER_HIGHLIGHT_COLOR [UIColor colorWithRed:48/255.0 green:56/255.0 blue:58/255.0 alpha:1.0]
 #define SLIDER_NORMAL_COLOR [UIColor colorWithRed:104/255.0 green:118/255.0 blue:126/255.0 alpha:1.0]
@@ -27,6 +29,7 @@
 @property (nonatomic, weak) IBOutlet UIButton *btn2;
 @property (nonatomic, weak) IBOutlet UIButton *btn3;
 
+@property (nonatomic)                TYRoofView       *mRoofView;
 
 @end
 
@@ -37,6 +40,7 @@
     [super awakeFromNib];
     
     [self setUpLayer];
+    [self setUpRoofView];
 }
 
 - (void) setUpLayer {
@@ -53,6 +57,12 @@
     
     self.selectedPos = LayerPositionCenter;
     [self drawSwooshLayerWithPosition:_selectedPos];
+}
+
+- (void)setUpRoofView {
+    
+    self.mRoofView = [[TYRoofView alloc]initWithFrame:CGRectMake(0, -15, self.bounds.size.width, 15)];
+    [self addSubview:_mRoofView];
 }
 
 - (void) drawSwooshLayerWithPosition:(LayerPosition)position {

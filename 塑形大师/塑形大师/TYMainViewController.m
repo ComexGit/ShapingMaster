@@ -11,9 +11,11 @@
 #import "TYTabBar.h"
 #import "TYWaveView.h"
 #import "TYNavigationBar.h"
-#import "TYRoofView.h"
 #import "UIResponder+Event.h"
 #import <pop/POP.h>
+#import "TYStatView.h"
+#import "TYPlanView.h"
+
 
 #define SCREEN_WIDTH        [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT       [[UIScreen mainScreen] bounds].size.height
@@ -22,15 +24,19 @@
 #define LINE_SPACE 15
 #define ITEM_SPACE 15
 
+#define DURATION 1.0
+
 static NSString *reusedStr = @"itemReusedCell";
 
-@interface TYMainViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface TYMainViewController () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, POPAnimationDelegate>
 
 @property (nonatomic, weak) IBOutlet UICollectionView *mCollectionView;
 @property (nonatomic, weak) IBOutlet TYTabBar         *mTabBar;
 @property (nonatomic, weak) IBOutlet TYNavigationBar  *mNavBar;
 @property (nonatomic)                TYWaveView       *mWaveViewNav;
-@property (nonatomic)                TYRoofView       *mRoofView;
+@property (nonatomic)                TYStatView       *mStatView;
+@property (nonatomic)                TYPlanView       *mPlanView;
+@property (nonatomic, assign)        LayerPosition    lastDirection;
 
 @end
 
@@ -39,8 +45,16 @@ static NSString *reusedStr = @"itemReusedCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    [self setUpPlanView];
+    [self setUpStatView];
     [self setUpWaveView];
-    [self setUpRoofView];
+}
+
+- (void)setUpPlanView {
+
+    self.mPlanView = [[TYPlanView alloc]initWithFrame:CGRectMake(-SCREEN_WIDTH, CGRectGetMaxY(_mNavBar.frame), SCREEN_WIDTH, _mCollectionView.frame.size.height)];
+    _mPlanView.backgroundColor = [UIColor colorWithRed:45/255.0 green:49/255.0 blue:50/255.0 alpha:1.0];
+    [self.view addSubview:_mPlanView];
 }
 
 -(void)setUpWaveView
@@ -49,10 +63,12 @@ static NSString *reusedStr = @"itemReusedCell";
     [_mNavBar addSubview:_mWaveViewNav];
 }
 
-- (void)setUpRoofView {
+- (void) setUpStatView {
 
-    self.mRoofView = [[TYRoofView alloc]initWithFrame:CGRectMake(0, -15, SCREEN_WIDTH, 15)];
-    [_mTabBar addSubview:_mRoofView];
+    self.mStatView = [[TYStatView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH, CGRectGetMaxY(_mNavBar.frame), SCREEN_WIDTH, _mCollectionView.frame.size.height)];
+    _mStatView.backgroundColor = [UIColor colorWithRed:45/255.0 green:49/255.0 blue:50/255.0 alpha:1.0];
+    [self.view addSubview:_mStatView];
+    [self.view bringSubviewToFront:_mTabBar];
 }
 
 - (void)passEventWithName:(NSString *)eventName userInfo:(NSDictionary *)userInfo {
@@ -77,12 +93,16 @@ static NSString *reusedStr = @"itemReusedCell";
 
 - (void) transitionToStatView {
 
-    [self collectionViewAnimation:0.7 translationArray:@[@-300, @-200, @-600, @-600] angles:@[@(-15* M_PI/180), @(-30* M_PI/180), @(-15* M_PI/180), @(-60* M_PI/180)] scaleArray:@[@0, @0, @0, @-5] direction:LayerPositionRight];
+    [_mStatView setHidden:NO];
+    _lastDirection = LayerPositionRight;
+    [self collectionViewAnimation:DURATION translationArray:@[@-300, @-200, @-600, @-600] angles:@[@(-15* M_PI/180), @(-30* M_PI/180), @(-15* M_PI/180), @(-60* M_PI/180)] scaleArray:@[@0, @0, @0, @-5] direction:LayerPositionRight];
 }
 
 - (void) transitionToPlanView {
 
-    [self collectionViewAnimation:0.7 translationArray:@[@300, @200, @600, @600] angles:@[@(15* M_PI/180), @(30* M_PI/180), @(15* M_PI/180), @(60* M_PI/180)] scaleArray:@[@0, @0, @0, @5] direction:LayerPositionLeft];
+    [_mPlanView setHidden:NO];
+    _lastDirection = LayerPositionLeft;
+    [self collectionViewAnimation:DURATION translationArray:@[@300, @200, @600, @600] angles:@[@(15* M_PI/180), @(30* M_PI/180), @(15* M_PI/180), @(60* M_PI/180)] scaleArray:@[@0, @0, @0, @5] direction:LayerPositionLeft];
 }
 
 - (void) transitionIdentify {
@@ -91,11 +111,11 @@ static NSString *reusedStr = @"itemReusedCell";
     
     if (_mTabBar.selectedPos == LayerPositionRight) {
         
-        [self collectionViewBackAnimation:0.7 translationArray:@[@-5, @0, @-300, @-100] angles:@[@(-2* M_PI/180), @(-5* M_PI/180), @(-30* M_PI/180), @(-10* M_PI/180)]];
+        [self collectionViewBackAnimation:DURATION translationArray:@[@-5, @0, @-300, @-100] angles:@[@(-2* M_PI/180), @(-5* M_PI/180), @(-30* M_PI/180), @(-10* M_PI/180)] direction:LayerPositionRight];
         
     }else {
         
-        [self collectionViewBackAnimation:0.7 translationArray:@[@5, @0, @300, @100] angles:@[@(2* M_PI/180), @(5* M_PI/180), @(30* M_PI/180), @(10* M_PI/180)]];
+        [self collectionViewBackAnimation:DURATION translationArray:@[@5, @0, @300, @100] angles:@[@(2* M_PI/180), @(5* M_PI/180), @(30* M_PI/180), @(10* M_PI/180)] direction:LayerPositionLeft];
     }
 }
 
@@ -149,7 +169,7 @@ static NSString *reusedStr = @"itemReusedCell";
     _mCollectionView.frame = fromFrame;
     
     POPBasicAnimation *frameAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewFrame];
-    frameAnimation.name = @"collectionAnimation";
+    frameAnimation.name = @"showEdgeAnimation";
     frameAnimation.duration = duration;
     frameAnimation.fromValue = [NSValue valueWithCGRect:toFrome];
     frameAnimation.toValue = [NSValue valueWithCGRect:fromFrame];
@@ -168,7 +188,8 @@ static NSString *reusedStr = @"itemReusedCell";
 
 - (void) collectionViewBackAnimation:(NSTimeInterval)duration
                     translationArray:(NSArray *)translationArray
-                              angles:(NSArray*)angles{
+                              angles:(NSArray*)angles
+                           direction:(LayerPosition)direction {
 
     int i = 0;
     for (UICollectionViewCell *cell in _mCollectionView.visibleCells) {
@@ -189,7 +210,6 @@ static NSString *reusedStr = @"itemReusedCell";
         [cell.layer pop_addAnimation:rotationAnimation forKey:@"rotationAnimation"];
         [cell.layer pop_addAnimation:translationAnimation forKey:@"translationAnimation"];
         i++;
-        
     }
     
     // collectionView 移动
@@ -208,10 +228,98 @@ static NSString *reusedStr = @"itemReusedCell";
     [frameAnimation setCompletionBlock:^(POPAnimation *anim, BOOL finished) {
         
         if (finished) {
-            //                [_scrollView setHidden:YES];
+            
+            if (direction == LayerPositionRight) {
+                
+                [_mStatView setHidden:YES];
+            }
+            if (direction == LayerPositionLeft) {
+                
+                [_mPlanView setHidden:YES];
+            }
         }
-        
     }];
+}
+
+#pragma mark - pop delegete
+
+- (void)pop_animationDidApply:(POPAnimation *)anim
+{
+    //    NSLog(@"%@",anim.name );
+    CGRect currentValue = [[anim valueForKey:@"currentValue"] CGRectValue];
+    
+    if ([anim.name isEqualToString:@"showEdgeAnimation"]) {
+        
+        [self edgeViewAnimation:_mTabBar.selectedPos currentRect:currentValue];
+    }
+    else if([anim.name isEqualToString:@"showHomeView"]){
+        
+        [self edgeViewBackAnimation:_lastDirection currentRect:currentValue];
+    }
+}
+
+- (void) edgeViewAnimation:(LayerPosition)direction currentRect:(CGRect)currentValue {
+
+    if (direction == LayerPositionLeft) {
+        
+        CGRect frame = _mPlanView.frame;
+        CGFloat distanceY = 30 *(1 -fabs(currentValue.origin.x /_mPlanView.frame.size.width));
+        
+        frame.origin.x = _mPlanView.frame.size.width  + currentValue.origin.x;
+        frame.origin.y =  CGRectGetMaxY(_mNavBar.frame) + distanceY;
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.0];
+        _mPlanView.frame = frame;
+        
+        [UIView commitAnimations];
+    }
+    if (direction == LayerPositionRight) {
+        
+        CGRect frame = _mStatView.frame;
+        CGFloat distanceY = 30 *(1 -fabs(currentValue.origin.x /_mStatView.frame.size.width));
+        
+        frame.origin.x = _mStatView.frame.size.width  + currentValue.origin.x;
+        frame.origin.y =  CGRectGetMaxY(_mNavBar.frame) + distanceY;
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.0];
+        _mStatView.frame = frame;
+        
+        [UIView commitAnimations];
+    }
+}
+
+- (void) edgeViewBackAnimation:(LayerPosition)direction currentRect:(CGRect)currentValue {
+    
+    if (direction == LayerPositionLeft) {
+        
+        CGRect frame = _mPlanView.frame;
+        CGFloat distanceY = 30 * (1 -  fabs(currentValue.origin.x /_mPlanView.frame.size.width));
+        
+        frame.origin.x = _mPlanView.frame.size.width  + currentValue.origin.x;
+        frame.origin.y =  CGRectGetMaxY(_mNavBar.frame) + distanceY;
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.0];
+        _mPlanView.frame = frame;
+        
+        [UIView commitAnimations];
+    }
+    if (direction == LayerPositionRight) {
+        
+        CGRect frame = _mStatView.frame;
+        CGFloat distanceY = 30 * (1 -  fabs(currentValue.origin.x /_mStatView.frame.size.width));
+        
+        frame.origin.x = _mStatView.frame.size.width  + currentValue.origin.x;
+        frame.origin.y =  CGRectGetMaxY(_mNavBar.frame) + distanceY;
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.0];
+        _mStatView.frame = frame;
+        
+        [UIView commitAnimations];
+    }
 }
 
 #pragma mark - UICollectionViewDataSource

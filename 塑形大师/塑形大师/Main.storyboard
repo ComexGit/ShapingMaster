@@ -157,7 +157,7 @@
                                 </connections>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.17716816069999999" green="0.19143438339999999" blue="0.19599112869999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="b2U-46-pou" secondAttribute="trailing" id="1Y2-vH-XLA"/>
                             <constraint firstItem="b2U-46-pou" firstAttribute="top" secondItem="pX6-mf-StR" secondAttribute="bottom" id="DRj-BF-e7c"/>
