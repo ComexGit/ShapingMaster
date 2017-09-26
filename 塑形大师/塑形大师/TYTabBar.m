@@ -23,6 +23,8 @@
     CGFloat layerCapPad;
     CGFloat btnPadLeft;
     CGFloat btnPadRight;
+    
+    CGPoint orginalPosition;
 }
 
 @property (nonatomic, weak) IBOutlet UIButton *btn1;
@@ -45,6 +47,8 @@
 
 - (void) setUpLayer {
 
+    orginalPosition = self.btn2.layer.position;
+    
     layerWidth = 40;
     layerHeight = 38;
     layerCapPad = 15;
@@ -99,6 +103,8 @@
         case LayerPositionLeft:
             
             swooshLayer.position = CGPointMake(-btnPadLeft, 0);
+            self.btn2.layer.position = self.btn3.layer.position;
+            self.btn3.hidden = YES;
             
             [self highlightBtn1Color];
             
@@ -107,6 +113,9 @@
         case LayerPositionCenter:
             
             swooshLayer.position = CGPointMake(0, 0);
+            self.btn2.layer.position = orginalPosition;
+            self.btn1.hidden = NO;
+            self.btn3.hidden = NO;
             
             [self highlightBtn2Color];
             
@@ -115,6 +124,8 @@
         case LayerPositionRight:
             
             swooshLayer.position = CGPointMake(btnPadRight, 0);
+            self.btn2.layer.position = self.btn1.layer.position;
+            self.btn1.hidden = YES;
             
             [self highlightBtn3Color];
             break;

@@ -16,7 +16,6 @@
 #import "TYStatView.h"
 #import "TYPlanView.h"
 
-
 #define SCREEN_WIDTH        [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT       [[UIScreen mainScreen] bounds].size.height
 
@@ -44,7 +43,7 @@ static NSString *reusedStr = @"itemReusedCell";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     [self setUpPlanView];
     [self setUpStatView];
     [self setUpWaveView];
@@ -72,7 +71,7 @@ static NSString *reusedStr = @"itemReusedCell";
 }
 
 - (void)passEventWithName:(NSString *)eventName userInfo:(NSDictionary *)userInfo {
-
+    
     if ([eventName isEqualToString:@"btn1"]) {
         
         [self transitionToPlanView];
