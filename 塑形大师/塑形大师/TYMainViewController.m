@@ -52,7 +52,8 @@ static NSString *reusedStr = @"itemReusedCell";
 - (void)setUpPlanView {
 
     self.mPlanView = [[TYPlanView alloc]initWithFrame:CGRectMake(-SCREEN_WIDTH, CGRectGetMaxY(_mNavBar.frame), SCREEN_WIDTH, _mCollectionView.frame.size.height)];
-    _mPlanView.backgroundColor = [UIColor colorWithRed:45/255.0 green:49/255.0 blue:50/255.0 alpha:1.0];
+//    _mPlanView.backgroundColor = [UIColor colorWithRed:45/255.0 green:49/255.0 blue:50/255.0 alpha:1.0];
+    _mPlanView.backgroundColor = [UIColor greenColor];
     [self.view addSubview:_mPlanView];
 }
 
@@ -65,7 +66,8 @@ static NSString *reusedStr = @"itemReusedCell";
 - (void) setUpStatView {
 
     self.mStatView = [[TYStatView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH, CGRectGetMaxY(_mNavBar.frame), SCREEN_WIDTH, _mCollectionView.frame.size.height)];
-    _mStatView.backgroundColor = [UIColor colorWithRed:45/255.0 green:49/255.0 blue:50/255.0 alpha:1.0];
+//    _mStatView.backgroundColor = [UIColor colorWithRed:45/255.0 green:49/255.0 blue:50/255.0 alpha:1.0];
+    _mStatView.backgroundColor = [UIColor redColor];
     [self.view addSubview:_mStatView];
     [self.view bringSubviewToFront:_mTabBar];
 }
@@ -264,7 +266,7 @@ static NSString *reusedStr = @"itemReusedCell";
         CGRect frame = _mPlanView.frame;
         CGFloat distanceY = 30 *(1 -fabs(currentValue.origin.x /_mPlanView.frame.size.width));
         
-        frame.origin.x = _mPlanView.frame.size.width  + currentValue.origin.x;
+        frame.origin.x = -_mPlanView.frame.size.width  + currentValue.origin.x;
         frame.origin.y =  CGRectGetMaxY(_mNavBar.frame) + distanceY;
         
         [UIView beginAnimations:nil context:NULL];
@@ -278,7 +280,7 @@ static NSString *reusedStr = @"itemReusedCell";
         CGRect frame = _mStatView.frame;
         CGFloat distanceY = 30 *(1 -fabs(currentValue.origin.x /_mStatView.frame.size.width));
         
-        frame.origin.x = _mStatView.frame.size.width  + currentValue.origin.x;
+        frame.origin.x = _mStatView.frame.size.width + currentValue.origin.x;
         frame.origin.y =  CGRectGetMaxY(_mNavBar.frame) + distanceY;
         
         [UIView beginAnimations:nil context:NULL];
@@ -296,7 +298,7 @@ static NSString *reusedStr = @"itemReusedCell";
         CGRect frame = _mPlanView.frame;
         CGFloat distanceY = 30 * (1 -  fabs(currentValue.origin.x /_mPlanView.frame.size.width));
         
-        frame.origin.x = _mPlanView.frame.size.width  + currentValue.origin.x;
+        frame.origin.x = -_mPlanView.frame.size.width  + currentValue.origin.x;
         frame.origin.y =  CGRectGetMaxY(_mNavBar.frame) + distanceY;
         
         [UIView beginAnimations:nil context:NULL];
@@ -333,6 +335,57 @@ static NSString *reusedStr = @"itemReusedCell";
     
     
     return cell;
+}
+
+#pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    UICollectionViewCell *selectedCell = (UICollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    [self scaleAnimationWithCollectionView:collectionView selectedCell:selectedCell];
+    
+    
+}
+
+- (void) scaleAnimationWithCollectionView:(UICollectionView *)collectionView selectedCell:(UICollectionViewCell *)selectedCell {
+    
+    for (UICollectionViewCell *cell in collectionView.visibleCells) {
+        
+        if ([cell isEqual:selectedCell]) {
+            
+            //选中的cell的放大
+            POPBasicAnimation *scaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+            scaleAnimation.duration = 0.5;
+            scaleAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(1.05, 1.05)];
+            [cell.layer pop_addAnimation:scaleAnimation forKey:@"scaleAnimation"];
+            
+            POPBasicAnimation *alphaAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+            alphaAnimation.duration = 0.5;
+            alphaAnimation.toValue = @1.0;
+            [cell pop_addAnimation:alphaAnimation forKey:nil];
+            
+            [alphaAnimation setCompletionBlock:^(POPAnimation *anim, BOOL finished) {
+                
+                if (finished) {
+
+                }
+            }];
+        }
+        else{
+            
+            //未选中的可视cell的缩放
+            POPBasicAnimation *scaleAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+            scaleAnimation.duration = 0.5;
+            scaleAnimation.toValue = [NSValue valueWithCGPoint:CGPointMake(0.95, 0.95)];
+            [cell.layer pop_addAnimation:scaleAnimation forKey:@"scaleAnimation"];
+            
+            POPBasicAnimation *alphaAnimation = [POPBasicAnimation animationWithPropertyNamed:kPOPViewAlpha];
+            alphaAnimation.duration = 0.5;
+            alphaAnimation.toValue = @0.7;
+            [cell pop_addAnimation:alphaAnimation forKey:nil];
+            
+        }
+    }
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
