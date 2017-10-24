@@ -8,7 +8,14 @@
 
 #import "TYCountingViewController.h"
 
-@interface TYCountingViewController ()
+@interface TYCountingViewController () {
+    
+    UIButton *backBtn;
+    UIButton *helpBtn;
+    
+}
+
+
 
 @end
 
@@ -17,6 +24,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor colorWithRed:45/255.0 green:49/255.0 blue:50/255.0 alpha:1.0];
+    
+}
+
+- (void) setupBackBtn {
+    
+    backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.view addSubview:backBtn];
+    [backBtn setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+//    [backBtn setImage:[UIImage imageNamed:@""] forState:UIControlStateHighlighted];
+    [backBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.mas_equalTo(self.view).mas_equalTo(15);
+    }];
     
     
 }
