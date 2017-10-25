@@ -10,4 +10,6 @@
 
 @interface TYCountingViewController : UIViewController
 
+- (instancetype)initWithTimes:(int)times countdown:(int)countdown;
+
 @end

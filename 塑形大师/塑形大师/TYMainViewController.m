@@ -16,8 +16,7 @@
 #import "TYStatView.h"
 #import "TYPlanView.h"
 
-#define SCREEN_WIDTH        [[UIScreen mainScreen] bounds].size.width
-#define SCREEN_HEIGHT       [[UIScreen mainScreen] bounds].size.height
+#import "TYCountingViewController.h"
 
 #define CELL_COUNT 4
 #define LINE_SPACE 15
@@ -47,6 +46,12 @@ static NSString *reusedStr = @"itemReusedCell";
     [self setUpPlanView];
     [self setUpStatView];
     [self setUpWaveView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [_mCollectionView reloadData];
 }
 
 - (void)setUpPlanView {
@@ -368,6 +373,8 @@ static NSString *reusedStr = @"itemReusedCell";
                 
                 if (finished) {
 
+                    TYCountingViewController *vc = [[TYCountingViewController alloc]initWithTimes:24 countdown:65];
+                    [self presentViewController:vc animated:YES completion:nil];
                 }
             }];
         }

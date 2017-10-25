@@ -25,6 +25,7 @@
 		C4272F531F624607005FCD17 /* TYStatView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F521F624607005FCD17 /* TYStatView.m */; };
 		C4272F561F628FA6005FCD17 /* TYPlanView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F551F628FA6005FCD17 /* TYPlanView.m */; };
 		C4272F641F66A954005FCD17 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4272F631F66A954005FCD17 /* LocalAuthentication.framework */; };
+		C4EA74BA1F9F23CF003A736E /* TYCountingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EA74B91F9F23CF003A736E /* TYCountingView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,8 @@
 		C4272F551F628FA6005FCD17 /* TYPlanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPlanView.m; sourceTree = "<group>"; };
 		C4272F631F66A954005FCD17 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		C4EA74B31F9EE418003A736E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		C4EA74B81F9F23CF003A736E /* TYCountingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYCountingView.h; sourceTree = "<group>"; };
+		C4EA74B91F9F23CF003A736E /* TYCountingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYCountingView.m; sourceTree = "<group>"; };
 		F2B803D68DE0681B291D0F46 /* Pods-塑形大师.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-塑形大师.debug.xcconfig"; path = "Pods/Target Support Files/Pods-塑形大师/Pods-塑形大师.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -190,6 +193,8 @@
 				C4272F521F624607005FCD17 /* TYStatView.m */,
 				C4272F541F628FA6005FCD17 /* TYPlanView.h */,
 				C4272F551F628FA6005FCD17 /* TYPlanView.m */,
+				C4EA74B81F9F23CF003A736E /* TYCountingView.h */,
+				C4EA74B91F9F23CF003A736E /* TYCountingView.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -374,6 +379,7 @@
 				C4272F501F612B02005FCD17 /* UIResponder+Event.m in Sources */,
 				C4272F531F624607005FCD17 /* TYStatView.m in Sources */,
 				C4272F4C1F5FCB76005FCD17 /* TYRoofView.m in Sources */,
+				C4EA74BA1F9F23CF003A736E /* TYCountingView.m in Sources */,
 				C4272F461F5D4260005FCD17 /* TYItemCollectionViewCell.m in Sources */,
 				C4272F151F5CEEB6005FCD17 /* AppDelegate.m in Sources */,
 				C4272F561F628FA6005FCD17 /* TYPlanView.m in Sources */,
