@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TYCountingView : UIView
+@interface TYCountingView : UIView 
 
 - (instancetype)initWithFrame:(CGRect)frame times:(int)times countdown:(int)countdown;
 - (void) updateCountLabel:(int)times;
 - (void) updateUpperLayerStrokeEnd:(CGFloat)strokeEnd;
+
+- (void) scaleAnimation;
+- (void) scaleIdentifyAnimation;
 
 @end

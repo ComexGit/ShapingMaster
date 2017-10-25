@@ -30,7 +30,7 @@
     if (self) {
         mTimes = times;
         mCountdown = countdown;
-        currentTimes = times;
+        currentTimes = times-1;
     }
     return self;
 }
@@ -89,16 +89,16 @@
 {
     if ([UIDevice currentDevice].proximityState) {
         
-        NSLog(@"有物品靠近");
-
+        NSLog(@"something close");
+        [countingView scaleAnimation];
         
     } else {
         
-        NSLog(@"有物品离开");
+        NSLog(@"something away");
     
         CGFloat percent = 1-currentTimes*1.0/mTimes;
         [countingView updateUpperLayerStrokeEnd:percent];
-        [countingView updateCountLabel:--currentTimes];
+        [countingView updateCountLabel:currentTimes--];
     }
 }
 

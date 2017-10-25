@@ -9,6 +9,9 @@
 #import "TYCountingView.h"
 #import <POP.h>
 
+@interface TYCountingView () <POPAnimationDelegate>
+
+@end
 
 @implementation TYCountingView {
     
@@ -25,7 +28,6 @@
     if (self) {
 
         [self initUIWithTimes:times countdown:countdown];
-//        [self timesAnimation:times];
         [self countdownAnimation:countdown];
     }
     return self;
@@ -87,6 +89,36 @@
     
     upperLayer.strokeEnd = strokeEnd;
     [self setNeedsDisplay];
+}
+
+- (void) scaleAnimation {
+    
+    POPBasicAnimation *animation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+    animation.toValue  = [NSValue valueWithCGSize:CGSizeMake(1.0f, 1.0f)];
+    animation.fromValue  = [NSValue valueWithCGSize:CGSizeMake(0.85f, 0.85f)];
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    animation.duration = 0.3;
+    animation.delegate = self;
+    [self.layer pop_addAnimation:animation forKey:@"scaleAnimation"];
+}
+
+- (void) scaleIdentifyAnimation {
+    
+    POPBasicAnimation *animation = [POPBasicAnimation animationWithPropertyNamed:kPOPLayerScaleXY];
+    animation.fromValue  = [NSValue valueWithCGSize:CGSizeMake(1.0f, 1.0f)];
+    animation.toValue  = [NSValue valueWithCGSize:CGSizeMake(0.85f, 0.85f)];
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    animation.duration = 0.8;
+    animation.delegate = self;
+    [self.layer pop_addAnimation:animation forKey:@"scaleIdentifyAnimation"];
+}
+
+- (void)pop_animationDidStop:(POPAnimation *)anim finished:(BOOL)finished {
+    
+    if ([anim.name isEqualToString:@"scaleAnimation"]) {
+        
+        [self scaleIdentifyAnimation];
+    }
 }
 
 - (void) updateCountLabel:(int)times {
