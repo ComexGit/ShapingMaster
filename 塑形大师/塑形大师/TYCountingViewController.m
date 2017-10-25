@@ -18,7 +18,7 @@
     
     int mTimes;
     int mCountdown;
-    int currentCount;
+    int currentTimes;
 }
 @end
 
@@ -30,7 +30,7 @@
     if (self) {
         mTimes = times;
         mCountdown = countdown;
-        currentCount = times;
+        currentTimes = times;
     }
     return self;
 }
@@ -95,8 +95,10 @@
     } else {
         
         NSLog(@"有物品离开");
-        [countingView updateCountLabel:--currentCount];
-        [countingView updateUpperLayerStrokeEnd:currentCount/mCountdown];
+    
+        CGFloat percent = 1-currentTimes*1.0/mTimes;
+        [countingView updateUpperLayerStrokeEnd:percent];
+        [countingView updateCountLabel:--currentTimes];
     }
 }
 
