@@ -8,9 +8,12 @@
 
 #import "TYCountingViewController.h"
 #import "TYCountingView.h"
+#import <CoreMotion/CoreMotion.h>
 
+#import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
-@interface TYCountingViewController () {
+@interface TYCountingViewController () <CLLocationManagerDelegate>{
     
     UIButton *backBtn;
     UIButton *helpBtn;
@@ -19,6 +22,12 @@
     int mTimes;
     int mCountdown;
     int currentTimes;
+    
+    CMMotionManager  *motionManager;
+    BOOL upStatus;
+    BOOL downStatus;
+    
+    CLLocationManager *locationManager;
 }
 @end
 
@@ -35,6 +44,12 @@
     return self;
 }
 
+- (void) viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    
+    [motionManager stopDeviceMotionUpdates];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -43,7 +58,9 @@
     [self setupBackBtn];
     [self setupCountingView];
     
-    [self openProximityMonitor];
+//    [self openProximityMonitor];
+//    [self startDeviceMotion];
+    [self startLocation];
 }
 
 - (void) setupBackBtn {
@@ -74,6 +91,10 @@
     [self.view addSubview:countingView];
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
 #pragma mark - 距离传感器
 
 - (void) openProximityMonitor {
@@ -102,8 +123,68 @@
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+#pragma mark - 加速计
+- (void)startDeviceMotion {
+    
+    motionManager = [[CMMotionManager alloc] init];
+    
+    if ([motionManager isDeviceMotionAvailable]){
+        
+        motionManager.deviceMotionUpdateInterval = 1/90;
+
+        [motionManager startDeviceMotionUpdatesToQueue:[[NSOperationQueue alloc] init] withHandler:^(CMDeviceMotion * _Nullable motion, NSError * _Nullable error) {
+
+            
+//            NSLog(@"motion.userAcceleration.x: %f", motion.userAcceleration.x);
+//            NSLog(@"motion.userAcceleration.y: %f", motion.userAcceleration.y);
+//            NSLog(@"motion.userAcceleration.z: %f", motion.userAcceleration.z);
+            
+            
+            if (motion.userAcceleration.y < -0.25) {
+                upStatus = YES;
+            }
+            
+            if (motion.userAcceleration.y > 0.25) {
+                downStatus = upStatus ? YES : NO;
+            }
+            
+            NSLog(@"upStatus:%d  downStatus:%d  motion.userAcceleration.y: %f", upStatus, downStatus, motion.userAcceleration.y);
+            
+            if (upStatus && downStatus) {
+                
+                upStatus = NO;
+                downStatus = NO;
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    CGFloat percent = 1-currentTimes*1.0/mTimes;
+                    [countingView updateUpperLayerStrokeEnd:percent];
+                    [countingView updateCountLabel:currentTimes--];
+                });
+            }
+        }];
+    }
+    else {
+        NSLog(@"加速计不可用");
+    }
+}
+
+- (void)startLocation {
+    
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.delegate = self;
+    [locationManager requestWhenInUseAuthorization];
+    [locationManager startUpdatingLocation];
+}
+
+-(void)locationManager:(CLLocationManager *)manager
+   didUpdateToLocation:(CLLocation *)newLocation
+          fromLocation:(CLLocation *)oldLocation
+{
+    float altitude = newLocation.altitude;
+    NSLog(@"海拔高度为：%.4fm", altitude);
+    NSLog(@"垂直精度为：%.4fm", newLocation.verticalAccuracy);
 }
 
 @end
