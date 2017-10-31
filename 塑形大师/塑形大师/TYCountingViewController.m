@@ -10,10 +10,8 @@
 #import "TYCountingView.h"
 #import <CoreMotion/CoreMotion.h>
 
-#import <CoreLocation/CoreLocation.h>
-#import <MapKit/MapKit.h>
 
-@interface TYCountingViewController () <CLLocationManagerDelegate>{
+@interface TYCountingViewController () {
     
     UIButton *backBtn;
     UIButton *helpBtn;
@@ -24,10 +22,13 @@
     int currentTimes;
     
     CMMotionManager  *motionManager;
-    BOOL upStatus;
-    BOOL downStatus;
-    
-    CLLocationManager *locationManager;
+    BOOL upStatusX;
+    BOOL downStatusX;
+    BOOL upStatusY;
+    BOOL downStatusY;
+    BOOL upStatusZ;
+    BOOL downStatusZ;
+
 }
 @end
 
@@ -59,8 +60,7 @@
     [self setupCountingView];
     
 //    [self openProximityMonitor];
-//    [self startDeviceMotion];
-    [self startLocation];
+    [self startDeviceMotion];
 }
 
 - (void) setupBackBtn {
@@ -138,22 +138,45 @@
 //            NSLog(@"motion.userAcceleration.x: %f", motion.userAcceleration.x);
 //            NSLog(@"motion.userAcceleration.y: %f", motion.userAcceleration.y);
 //            NSLog(@"motion.userAcceleration.z: %f", motion.userAcceleration.z);
+//            if (motion.userAcceleration.x < -0.4) {
+//                upStatusX = YES;
+//            }
+//
+//            if (motion.userAcceleration.x > 0.4) {
+//                downStatusX = upStatusX ? YES : NO;
+//            }
             
-            
-            if (motion.userAcceleration.y < -0.25) {
-                upStatus = YES;
-            }
-            
-            if (motion.userAcceleration.y > 0.25) {
-                downStatus = upStatus ? YES : NO;
-            }
-            
-            NSLog(@"upStatus:%d  downStatus:%d  motion.userAcceleration.y: %f", upStatus, downStatus, motion.userAcceleration.y);
-            
-            if (upStatus && downStatus) {
+            if (motion.userAcceleration.y + motion.userAcceleration.x + motion.userAcceleration.z < -0.4) {
                 
-                upStatus = NO;
-                downStatus = NO;
+                upStatusY = YES;
+                
+                
+            }
+            
+            if (motion.userAcceleration.y + motion.userAcceleration.x + motion.userAcceleration.z > 0.4) {
+                
+
+                downStatusY = upStatusY ? YES : NO;
+            }
+            
+//            if (motion.userAcceleration.z < -0.4) {
+//                upStatusZ = YES;
+//            }
+//
+//            if (motion.userAcceleration.z > 0.4) {
+//                downStatusZ = upStatusZ ? YES : NO;
+//            }
+            
+            NSLog(@"upStatus:%d  downStatus:%d  motion.userAcceleration.y: %f", upStatusY, downStatusY, motion.userAcceleration.y);
+            
+            if ((upStatusX && downStatusX) || (upStatusY && downStatusY) || (upStatusZ && downStatusZ)) {
+                
+                upStatusX = NO;
+                downStatusX = NO;
+                upStatusY = NO;
+                downStatusY = NO;
+                upStatusZ = NO;
+                downStatusZ = NO;
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
@@ -169,22 +192,5 @@
     }
 }
 
-- (void)startLocation {
-    
-    locationManager = [[CLLocationManager alloc] init];
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.delegate = self;
-    [locationManager requestWhenInUseAuthorization];
-    [locationManager startUpdatingLocation];
-}
-
--(void)locationManager:(CLLocationManager *)manager
-   didUpdateToLocation:(CLLocation *)newLocation
-          fromLocation:(CLLocation *)oldLocation
-{
-    float altitude = newLocation.altitude;
-    NSLog(@"海拔高度为：%.4fm", altitude);
-    NSLog(@"垂直精度为：%.4fm", newLocation.verticalAccuracy);
-}
 
 @end
