@@ -54,7 +54,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithRed:45/255.0 green:49/255.0 blue:50/255.0 alpha:1.0];
+    self.view.backgroundColor = MAIN_BG_COLOR;
     
     [self setupBackBtn];
     [self setupCountingView];

@@ -58,7 +58,7 @@
 //    [UIColor colorWithRed:45/255.0 green:49/255.0 blue:50/255.0 alpha:1.0];
 //    [UIColor colorWithRed:32/255.0 green:35/255.0 blue:36/255.0 alpha:1.0];
 //    [UIColor colorWithRed:57/255.0 green:61/255.0 blue:63/255.0 alpha:1.0];
-    _frontColor    = [UIColor colorWithRed:45/255.0 green:49/255.0 blue:50/255.0 alpha:1.0];
+    _frontColor    = MAIN_BG_COLOR;
     _insideColor   = [UIColor colorWithRed:32/255.0 green:35/255.0 blue:36/255.0 alpha:1.0];
     _frontSpeed    = 0.02;
     _insideSpeed   = 0.02 * 1.2;

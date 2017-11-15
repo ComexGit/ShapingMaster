@@ -25,6 +25,8 @@
 		C4272F531F624607005FCD17 /* TYStatView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F521F624607005FCD17 /* TYStatView.m */; };
 		C4272F561F628FA6005FCD17 /* TYPlanView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4272F551F628FA6005FCD17 /* TYPlanView.m */; };
 		C4272F641F66A954005FCD17 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4272F631F66A954005FCD17 /* LocalAuthentication.framework */; };
+		C48B1FD41FBC3683008273BB /* TYPreCountingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B1FD31FBC3683008273BB /* TYPreCountingViewController.m */; };
+		C48B1FD71FBC373F008273BB /* TYCountingSetupView.m in Sources */ = {isa = PBXBuildFile; fileRef = C48B1FD61FBC373F008273BB /* TYCountingSetupView.m */; };
 		C4EA74BA1F9F23CF003A736E /* TYCountingView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EA74B91F9F23CF003A736E /* TYCountingView.m */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,10 @@
 		C4272F541F628FA6005FCD17 /* TYPlanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPlanView.h; sourceTree = "<group>"; };
 		C4272F551F628FA6005FCD17 /* TYPlanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPlanView.m; sourceTree = "<group>"; };
 		C4272F631F66A954005FCD17 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		C48B1FD21FBC3683008273BB /* TYPreCountingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYPreCountingViewController.h; sourceTree = "<group>"; };
+		C48B1FD31FBC3683008273BB /* TYPreCountingViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYPreCountingViewController.m; sourceTree = "<group>"; };
+		C48B1FD51FBC373F008273BB /* TYCountingSetupView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYCountingSetupView.h; sourceTree = "<group>"; };
+		C48B1FD61FBC373F008273BB /* TYCountingSetupView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYCountingSetupView.m; sourceTree = "<group>"; };
 		C4EA74B31F9EE418003A736E /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		C4EA74B81F9F23CF003A736E /* TYCountingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYCountingView.h; sourceTree = "<group>"; };
 		C4EA74B91F9F23CF003A736E /* TYCountingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYCountingView.m; sourceTree = "<group>"; };
@@ -167,6 +173,8 @@
 			children = (
 				C4272F321F5CF5F8005FCD17 /* TYMainViewController.h */,
 				C4272F331F5CF5F8005FCD17 /* TYMainViewController.m */,
+				C48B1FD21FBC3683008273BB /* TYPreCountingViewController.h */,
+				C48B1FD31FBC3683008273BB /* TYPreCountingViewController.m */,
 				C404194D1F9DEA7800CD211E /* TYCountingViewController.h */,
 				C404194E1F9DEA7900CD211E /* TYCountingViewController.m */,
 			);
@@ -193,6 +201,8 @@
 				C4272F521F624607005FCD17 /* TYStatView.m */,
 				C4272F541F628FA6005FCD17 /* TYPlanView.h */,
 				C4272F551F628FA6005FCD17 /* TYPlanView.m */,
+				C48B1FD51FBC373F008273BB /* TYCountingSetupView.h */,
+				C48B1FD61FBC373F008273BB /* TYCountingSetupView.m */,
 				C4EA74B81F9F23CF003A736E /* TYCountingView.h */,
 				C4EA74B91F9F23CF003A736E /* TYCountingView.m */,
 			);
@@ -375,9 +385,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C48B1FD71FBC373F008273BB /* TYCountingSetupView.m in Sources */,
 				C4272F371F5CF621005FCD17 /* TYNavigationController.m in Sources */,
 				C4272F501F612B02005FCD17 /* UIResponder+Event.m in Sources */,
 				C4272F531F624607005FCD17 /* TYStatView.m in Sources */,
+				C48B1FD41FBC3683008273BB /* TYPreCountingViewController.m in Sources */,
 				C4272F4C1F5FCB76005FCD17 /* TYRoofView.m in Sources */,
 				C4EA74BA1F9F23CF003A736E /* TYCountingView.m in Sources */,
 				C4272F461F5D4260005FCD17 /* TYItemCollectionViewCell.m in Sources */,

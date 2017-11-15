@@ -16,4 +16,6 @@
 #define SCREEN_WIDTH        [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT       [[UIScreen mainScreen] bounds].size.height
 
+#define MAIN_BG_COLOR       [UIColor colorWithRed:45/255.0 green:49/255.0 blue:50/255.0 alpha:1.0]
+
 #endif /* PrefixHeader_pch */

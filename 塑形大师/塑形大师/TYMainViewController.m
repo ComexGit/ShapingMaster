@@ -15,8 +15,7 @@
 #import <pop/POP.h>
 #import "TYStatView.h"
 #import "TYPlanView.h"
-
-#import "TYCountingViewController.h"
+#import "TYPreCountingViewController.h"
 
 #define CELL_COUNT 4
 #define LINE_SPACE 15
@@ -57,7 +56,7 @@ static NSString *reusedStr = @"itemReusedCell";
 - (void)setUpPlanView {
 
     self.mPlanView = [[TYPlanView alloc]initWithFrame:CGRectMake(-SCREEN_WIDTH, CGRectGetMaxY(_mNavBar.frame), SCREEN_WIDTH, _mCollectionView.frame.size.height)];
-//    _mPlanView.backgroundColor = [UIColor colorWithRed:45/255.0 green:49/255.0 blue:50/255.0 alpha:1.0];
+//    _mPlanView.backgroundColor = MAIN_BG_COLOR;
     _mPlanView.backgroundColor = [UIColor greenColor];
     [self.view addSubview:_mPlanView];
 }
@@ -71,7 +70,7 @@ static NSString *reusedStr = @"itemReusedCell";
 - (void) setUpStatView {
 
     self.mStatView = [[TYStatView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH, CGRectGetMaxY(_mNavBar.frame), SCREEN_WIDTH, _mCollectionView.frame.size.height)];
-//    _mStatView.backgroundColor = [UIColor colorWithRed:45/255.0 green:49/255.0 blue:50/255.0 alpha:1.0];
+//    _mStatView.backgroundColor = MAIN_BG_COLOR;
     _mStatView.backgroundColor = [UIColor redColor];
     [self.view addSubview:_mStatView];
     [self.view bringSubviewToFront:_mTabBar];
@@ -373,8 +372,7 @@ static NSString *reusedStr = @"itemReusedCell";
                 
                 if (finished) {
 
-                    TYCountingViewController *vc = [[TYCountingViewController alloc]initWithTimes:24 countdown:65];
-                    [self presentViewController:vc animated:YES completion:nil];
+                    [self pushToNextView];
                 }
             }];
         }
@@ -393,6 +391,12 @@ static NSString *reusedStr = @"itemReusedCell";
             
         }
     }
+}
+
+- (void) pushToNextView {
+    
+    TYPreCountingViewController *vc = [TYPreCountingViewController new];
+    [self presentViewController:vc animated:YES completion:nil];
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
