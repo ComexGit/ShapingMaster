@@ -17,9 +17,9 @@
     UIButton *helpBtn;
     TYCountingView *countingView;
     
-    int mTimes;
+    int mCount;
     int mCountdown;
-    int currentTimes;
+    int currentCount;
     
     CMMotionManager  *motionManager;
     BOOL upStatusX;
@@ -34,13 +34,13 @@
 
 @implementation TYCountingViewController
 
-- (instancetype)initWithTimes:(int)times countdown:(int)countdown
+- (instancetype)initWithCount:(int)count countdown:(int)countdown
 {
     self = [super init];
     if (self) {
-        mTimes = times;
+        mCount = count;
         mCountdown = countdown;
-        currentTimes = times-1;
+        currentCount = count-1;
     }
     return self;
 }
@@ -85,7 +85,7 @@
 - (void) setupCountingView {
     
     CGFloat edgeWidth = SCREEN_WIDTH - 100;
-    countingView = [[TYCountingView alloc]initWithFrame:CGRectMake(0, 0, edgeWidth, edgeWidth) times:mTimes countdown:mCountdown];
+    countingView = [[TYCountingView alloc]initWithFrame:CGRectMake(0, 0, edgeWidth, edgeWidth) times:mCount countdown:mCountdown];
     countingView.center = CGPointMake(self.view.center.x, self.view.center.y - 40);
     countingView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:countingView];
@@ -117,9 +117,9 @@
         
         NSLog(@"something away");
     
-        CGFloat percent = 1-currentTimes*1.0/mTimes;
+        CGFloat percent = 1-currentCount*1.0/mCount;
         [countingView updateUpperLayerStrokeEnd:percent];
-        [countingView updateCountLabel:currentTimes--];
+        [countingView updateCountLabel:currentCount--];
     }
 }
 
@@ -180,9 +180,9 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    CGFloat percent = 1-currentTimes*1.0/mTimes;
+                    CGFloat percent = 1-currentCount*1.0/mCount;
                     [countingView updateUpperLayerStrokeEnd:percent];
-                    [countingView updateCountLabel:currentTimes--];
+                    [countingView updateCountLabel:currentCount--];
                 });
             }
         }];

@@ -136,8 +136,8 @@
         };
     }];
     
-    POPBasicAnimation *anBasic = [POPBasicAnimation linearAnimation];   //秒表当然必须是线性的时间函数
-    anBasic.property = prop;    //自定义属性
+    POPBasicAnimation *anBasic = [POPBasicAnimation linearAnimation];
+    anBasic.property = prop;
     anBasic.fromValue = @(countdown);
     anBasic.toValue = @(0);
     anBasic.duration = countdown;

@@ -11,3 +11,25 @@
 @interface TYCountingSetupView : UIView
 
 @end
+
+#pragma mark - subview
+
+@interface TYCountingNormalModeView : UIView
+
+
+@end
+
+@interface TYCountingTimeLimitedModeView : UIView
+
+
+@end
+
+@interface TYCountingInfiniteModeView : UIView
+
+
+@end
+
+@interface TYCountingGroupModeView : UIView
+
+
+@end
