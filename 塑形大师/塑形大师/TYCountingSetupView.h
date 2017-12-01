@@ -19,7 +19,7 @@
 
 @end
 
-@interface TYCountingTimeLimitedModeView : UIView
+@interface TYCountingTimeLimitedModeView : UIView <UIPickerViewDataSource, UIPickerViewDelegate>
 
 
 @end

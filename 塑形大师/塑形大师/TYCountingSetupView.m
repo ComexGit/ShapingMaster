@@ -44,39 +44,29 @@ typedef enum {
 }
 
 - (void) initUI {
-/*
-    view1 = [UIView new];
-    view1.backgroundColor = [UIColor redColor];
-    [self addSubview:view1];
-    
-    UIButton *btn = [UIButton new];
-    [btn setImage:[UIImage imageNamed:@"start"] forState:UIControlStateNormal];
-    [btn addTarget:self action:@selector(handleBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [view1 addSubview:btn];
-    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.center.mas_equalTo(view1);
-    }];
-    
-    [view1 mas_makeConstraints:^(MASConstraintMaker *make) {
+
+    normalModeView = [TYCountingNormalModeView new];
+    normalModeView.backgroundColor = [UIColor redColor];
+    [self addSubview:normalModeView];
+    [normalModeView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self);
     }];
     
-    view2 = [UIView new];
-    view2.backgroundColor = [UIColor greenColor];
-    [self addSubview:view2];
-    [view2 mas_makeConstraints:^(MASConstraintMaker *make) {
+    timeLimitedModeView = [TYCountingTimeLimitedModeView new];
+    timeLimitedModeView.backgroundColor = [UIColor greenColor];
+    [self addSubview:timeLimitedModeView];
+    [timeLimitedModeView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self);
     }];
     
-    view3 = [UIView new];
-    view3.backgroundColor = [UIColor yellowColor];
-    [self addSubview:view3];
-    [view3 mas_makeConstraints:^(MASConstraintMaker *make) {
+    infiniteModeView = [TYCountingInfiniteModeView new];
+    infiniteModeView.backgroundColor = [UIColor yellowColor];
+    [self addSubview:infiniteModeView];
+    [infiniteModeView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self);
     }];
     
-    subViewList = [NSMutableArray arrayWithArray:@[view3,view2,view1]];
- */
+    subViewList = [NSMutableArray arrayWithArray:@[infiniteModeView,timeLimitedModeView,normalModeView]];
 }
 
 -(void) handleBtnClick {
@@ -149,22 +139,182 @@ typedef enum {
 
 #pragma mark - subview
 
-@implementation TYCountingNormalModeView
+@implementation TYCountingNormalModeView {
+    
+    UILabel *titleLabel;
+    UILabel *tipLabel;
+    UIButton *addBtn;
+    UIButton *reduceBtn;
+    UIButton *countBtn;
+}
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self setupUI];
+    }
+    return self;
+}
+
+- (void) setupUI {
+    
+    titleLabel = [UILabel new];
+    titleLabel.text = @"次数模式";
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:titleLabel];
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self).mas_offset(15);
+        make.centerX.mas_equalTo(self);
+    }];
+    
+    countBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    countBtn.titleLabel.font = [UIFont systemFontOfSize:55.0];
+    [countBtn setTitle:@"21" forState:UIControlStateNormal];
+    [self addSubview:countBtn];
+    [countBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(titleLabel.mas_bottom).mas_offset(5);
+        make.centerX.mas_equalTo(self);
+    }];
+    
+    tipLabel = [UILabel new];
+    tipLabel.text = @"次数";
+    tipLabel.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:tipLabel];
+    [tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(countBtn.mas_bottom).mas_offset(5);
+        make.centerX.mas_equalTo(self);
+    }];
+    
+    addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    addBtn.titleLabel.font = [UIFont systemFontOfSize:32.0];
+    [addBtn setTitle:@"+" forState:UIControlStateNormal];
+    [self addSubview:addBtn];
+    [addBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(countBtn.mas_right).mas_offset(10);
+        make.centerY.mas_equalTo(countBtn);
+    }];
+    
+    reduceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [reduceBtn setTitle:@"-" forState:UIControlStateNormal];
+    reduceBtn.titleLabel.font = [UIFont systemFontOfSize:32.0];
+    [self addSubview:reduceBtn];
+    [reduceBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(titleLabel.mas_left).mas_offset(-10);
+        make.centerY.mas_equalTo(countBtn);
+    }];
+}
 
 @end
 
-@implementation TYCountingTimeLimitedModeView
+@implementation TYCountingTimeLimitedModeView {
+    
+    UILabel *titleLabel;
+    UIPickerView *pickerView;
+}
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self setupUI];
+    }
+    return self;
+}
+
+- (void) setupUI {
+    
+    titleLabel = [UILabel new];
+    titleLabel.text = @"限时模式";
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self addSubview:titleLabel];
+    [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(self).mas_offset(15);
+        make.centerX.mas_equalTo(self);
+    }];
+    
+    pickerView = [UIPickerView new];
+    pickerView.dataSource = self;
+    pickerView.delegate = self;
+    [self addSubview:pickerView];
+    [pickerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.mas_equalTo(titleLabel.mas_bottom).mas_offset(10);
+        make.right.bottom.mas_equalTo(self).mas_offset(-15);
+        make.left.mas_equalTo(self).mas_offset(15);
+    }];
+}
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 2;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return 60;
+}
+
+//- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+//
+//
+//}
+//
+//- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
+//
+//
+//}
+
+- (nullable NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    
+    if (component == 0) {
+        return [NSString stringWithFormat:@"%ld min", row];
+    }
+    return [NSString stringWithFormat:@"%ld sec", row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    
+    
+}
 
 @end
 
-@implementation TYCountingInfiniteModeView
+@implementation TYCountingInfiniteModeView {
+    
+    
+}
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self setupUI];
+    }
+    return self;
+}
+
+- (void) setupUI {
+    
+    
+}
 
 @end
 
-@implementation TYCountingGroupModeView
+@implementation TYCountingGroupModeView {
+    
+    
+}
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self setupUI];
+    }
+    return self;
+}
+
+- (void) setupUI {
+    
+    
+}
 
 @end

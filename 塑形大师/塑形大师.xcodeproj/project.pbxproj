@@ -530,7 +530,7 @@
 				INFOPLIST_FILE = "塑形大师/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tenyears.shapingmaster01;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tenyears.shapingmaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -545,7 +545,7 @@
 				INFOPLIST_FILE = "塑形大师/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tenyears.shapingmaster01;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tenyears.shapingmaster;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
